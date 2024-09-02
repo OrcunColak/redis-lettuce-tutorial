@@ -29,7 +29,9 @@ class DistributedLock {
             // Try to acquire the lock
             long startTime = System.currentTimeMillis();
             while ((System.currentTimeMillis() - startTime) < LOCK_EXPIRY) {
-                String result = commands.set(lockKey, "locked");
+
+                String lockValue = "distributed_lock";
+                String result = commands.set(lockKey, lockValue);
                 if ("OK".equals(result)) {
                     // Lock acquired successfully
                     return true;
@@ -52,6 +54,4 @@ class DistributedLock {
             commands.del(lockKey);
         }
     }
-
-
 }
