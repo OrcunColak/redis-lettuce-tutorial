@@ -27,7 +27,7 @@ class GroupConsumer {
             String consumerGroup = "Group1";
             String consumerName = "consumer1";
             while (true) {
-                List<StreamMessage<String, String>> messages = new ArrayList();
+                List<StreamMessage<String, String>> messages = new ArrayList<>();
 
                 Consumer<String> from = Consumer.from(consumerGroup, consumerName);
                 XReadArgs count = XReadArgs.Builder.count(3);
